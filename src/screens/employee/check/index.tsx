@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { useCurrentTime } from '@/hooks/timeTracking/useCurrentTime';
 import { useTimeClock } from '@/hooks/timeTracking/useTimeClock';
@@ -15,7 +16,14 @@ type ClockAction = {
   type: TimeClockType;
   labelKey: string;
   iconName: 'log-in' | 'coffee' | 'corner-up-left' | 'log-out';
-  bgColor: 'primary' | 'orange' | 'blue' | 'red';
+  bgColor: 'secondary' | 'warning' | 'info' | 'error';
+};
+
+const ACTION_GRADIENT_END: Record<ClockAction['bgColor'], string> = {
+  secondary: '#61B96D',
+  warning: '#E6A93A',
+  info: '#5A9CF2',
+  error: '#E06464',
 };
 
 export function DashboardScreen() {
@@ -25,18 +33,18 @@ export function DashboardScreen() {
   const { summary, isRegistering, handleTimeClock } = useTimeClock();
 
   const actions: ClockAction[] = [
-    { type: 'entry', labelKey: 'employeeCheck.actions.entry', iconName: 'log-in', bgColor: 'primary' },
-    { type: 'lunch_out', labelKey: 'employeeCheck.actions.lunchOut', iconName: 'coffee', bgColor: 'orange' },
-    { type: 'lunch_return', labelKey: 'employeeCheck.actions.lunchReturn', iconName: 'corner-up-left', bgColor: 'blue' },
-    { type: 'exit', labelKey: 'employeeCheck.actions.exit', iconName: 'log-out', bgColor: 'red' },
+    { type: 'entry', labelKey: 'employeeCheck.actions.entry', iconName: 'log-in', bgColor: 'secondary' },
+    { type: 'lunch_out', labelKey: 'employeeCheck.actions.lunchOut', iconName: 'coffee', bgColor: 'warning' },
+    { type: 'lunch_return', labelKey: 'employeeCheck.actions.lunchReturn', iconName: 'corner-up-left', bgColor: 'info' },
+    { type: 'exit', labelKey: 'employeeCheck.actions.exit', iconName: 'log-out', bgColor: 'error' },
   ];
 
   return (
     <ScreenContainer contentStyle={styles.screenContent}>
-      <View style={[styles.currentTimeCard, { backgroundColor: colors.secondary }]}>
+      <LinearGradient colors={[colors.secondary, '#61B96D']} style={styles.currentTimeCard}>
         <Text style={[styles.currentTimeLabel, { color: colors.tertiary }]}>{t('employeeCheck.currentTime')}</Text>
         <Text style={[styles.currentTimeValue, { color: colors.tertiary }]}>{currentTime}</Text>
-      </View>
+      </LinearGradient>
 
       <AppCard style={styles.summaryCard}>
         <View style={styles.summarySection}>
@@ -54,21 +62,19 @@ export function DashboardScreen() {
 
       <View style={styles.buttonGrid}>
         {actions.map((action) => (
-          <Pressable
+          <LinearGradient
             key={action.type}
-            disabled={isRegistering}
-            onPress={() => handleTimeClock(action.type)}
-            style={[
-              styles.timeClockButton,
-              { backgroundColor: colors[action.bgColor], opacity: isRegistering ? 0.65 : 1 },
-            ]}>
-            <View style={styles.timeClockIconWrap}>
-              <IconHelper provider="Feather" name={action.iconName} size={36} color={colors.tertiary} />
-            </View>
-            <View style={styles.timeClockTextWrap}>
-              <Text style={[styles.timeClockButtonText, { color: colors.tertiary }]}>{t(action.labelKey)}</Text>
-            </View>
-          </Pressable>
+            colors={[colors[action.bgColor], ACTION_GRADIENT_END[action.bgColor]]}
+            style={[styles.timeClockButton, { opacity: isRegistering ? 0.65 : 1 }]}>
+            <Pressable disabled={isRegistering} onPress={() => handleTimeClock(action.type)} style={styles.timeClockButtonPressable}>
+              <View style={styles.timeClockIconWrap}>
+                <IconHelper provider="Feather" name={action.iconName} size={36} color={colors.tertiary} />
+              </View>
+              <View style={styles.timeClockTextWrap}>
+                <Text style={[styles.timeClockButtonText, { color: colors.tertiary }]}>{t(action.labelKey)}</Text>
+              </View>
+            </Pressable>
+          </LinearGradient>
         ))}
       </View>
     </ScreenContainer>
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
     ...textStyles.weightExtraBold,
   },
   summaryCard: {
-    marginTop: -16,
+    marginTop: -30,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 26,
@@ -139,6 +145,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 12,
     paddingHorizontal: 8,
+  },
+  timeClockButtonPressable: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   timeClockIconWrap: {
     height: 44,
