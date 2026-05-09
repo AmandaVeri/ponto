@@ -8,7 +8,7 @@ export function AppContainer({ children }: PropsWithChildren) {
 
   return (
     <View style={styles.outer}>
-      <View style={[styles.inner, { backgroundColor: colors.disabled }]}>{children}</View>
+      <View style={[styles.inner, { backgroundColor: colors.disabledlight }]}>{children}</View>
     </View>
   );
 }
@@ -16,7 +16,7 @@ export function AppContainer({ children }: PropsWithChildren) {
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    margin: 15,
+    margin: 10,
   },
   inner: {
     flex: 1,

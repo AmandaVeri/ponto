@@ -5,8 +5,8 @@ type AppColors = AppTheme['colors'];
 export function getBottomTabBarStyle(colors: AppColors) {
   return {
     height: 70,
-    backgroundColor: colors.disabledlight,
-    borderTopColor: colors.disabled,
+    backgroundColor: colors.tertiary,
+    borderTopColor: 'transparent',
     borderTopWidth: 0,
   } as const;
 }

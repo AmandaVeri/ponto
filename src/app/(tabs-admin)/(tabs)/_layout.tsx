@@ -1,4 +1,5 @@
 import { router, Slot, Tabs, type Href, usePathname } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
@@ -22,9 +23,9 @@ export default function AdminTabsLayout() {
   if (isDesktop) {
     return (
       <View key={modeKey} style={styles.desktopRoot}>
-        <View style={[styles.sidebar, { borderRightColor: colors.border }]}>
-          <View style={[styles.sidebarBrand, { borderBottomColor: colors.border }]}>
-            <Text style={[styles.brandText, { color: colors.text }]}>PontoCerto</Text>
+        <LinearGradient colors={[colors.primary, '#123746', colors.primary]} style={[styles.sidebar, { borderRightColor: 'transparent' }]}>
+          <View style={[styles.sidebarBrand, { borderBottomColor: 'transparent' }]}>
+            <Text style={[styles.brandText, { color: colors.tertiary }]}>PontoCerto</Text>
           </View>
 
           <View style={styles.sidebarMenu}>
@@ -32,52 +33,55 @@ export default function AdminTabsLayout() {
               const href = (`/(tabs-admin)/(tabs)/${tab.name}`) as Href;
               const isActive = pathname === `/${tab.name}`;
 
-              return (
+              const item = (
                 <Pressable
                   key={tab.name}
                   onPress={() => router.push(href)}
-                  style={[
-                    styles.sidebarItem,
-                    {
-                      borderColor: isActive ? colors.primary : 'transparent',
-                      backgroundColor: isActive ? colors.surfaceMuted : 'transparent',
-                    },
-                  ]}>
-                  <AppIcon name={tab.icon} size={20} color={isActive ? colors.primary : colors.textMuted} />
-                  <Text style={{ color: isActive ? colors.primary : colors.text }}>{t(tab.labelKey)}</Text>
+                  style={styles.sidebarItem}>
+                  <AppIcon name={tab.icon} size={20} color={colors.tertiary} />
+                  <Text style={{ color: colors.tertiary }}>{t(tab.labelKey)}</Text>
                 </Pressable>
+              );
+
+              if (!isActive) return item;
+
+              return (
+                <LinearGradient key={tab.name} colors={[colors.secondary, '#61B96D']} style={styles.sidebarItemActive}>
+                  {item}
+                </LinearGradient>
               );
             })}
 
-            <Pressable
-              onPress={() => router.push('/(tabs-admin)/(tabs)/settings' as Href)}
-              style={[
-                styles.sidebarItem,
-                {
-                  borderColor: pathname === '/settings' ? colors.primary : 'transparent',
-                  backgroundColor: pathname === '/settings' ? colors.surfaceMuted : 'transparent',
-                },
-              ]}>
-              <AppIcon name="settings" size={20} color={pathname === '/settings' ? colors.primary : colors.textMuted} />
-              <Text style={{ color: pathname === '/settings' ? colors.primary : colors.text }}>{t('common:menu.settings')}</Text>
-            </Pressable>
+            {pathname === '/settings' ? (
+              <LinearGradient colors={[colors.secondary, '#61B96D']} style={styles.sidebarItemActive}>
+                <Pressable onPress={() => router.push('/(tabs-admin)/(tabs)/settings' as Href)} style={styles.sidebarItem}>
+                  <AppIcon name="settings" size={20} color={colors.tertiary} />
+                  <Text style={{ color: colors.tertiary }}>{t('common:menu.settings')}</Text>
+                </Pressable>
+              </LinearGradient>
+            ) : (
+              <Pressable onPress={() => router.push('/(tabs-admin)/(tabs)/settings' as Href)} style={styles.sidebarItem}>
+                <AppIcon name="settings" size={20} color={colors.tertiary} />
+                <Text style={{ color: colors.tertiary }}>{t('common:menu.settings')}</Text>
+              </Pressable>
+            )}
           </View>
-        </View>
+        </LinearGradient>
 
         <View style={styles.main}>
-          <View style={[styles.topMenu, { borderBottomColor: colors.border }]}>
-            <Text style={{ color: colors.textMuted }}>20/05/2024</Text>
+          <View style={[styles.topMenu, { borderBottomColor: 'transparent', backgroundColor: colors.tertiary }]}>
+            <Text style={{ color: colors.primary }}>20/05/2024</Text>
             <View style={styles.topMenuRight}>
               <LanguageSelector variant="header" />
-              <AppIcon name="profile" size={18} color={colors.textMuted} />
-              <Text style={{ color: colors.text }}>Admin</Text>
+              <AppIcon name="profile" size={18} color={colors.primary} />
+              <Text style={{ color: colors.primary }}>Admin</Text>
               <Pressable onPress={() => router.replace('/auth' as Href)} style={styles.logoutButton}>
                 <Text style={{ color: colors.primary, fontWeight: '600' }}>{t('common:menu.logout')}</Text>
               </Pressable>
             </View>
           </View>
 
-          <View style={styles.content}>
+          <View style={[styles.content, { backgroundColor: colors.tertiary }]}>
             <Slot />
           </View>
         </View>
@@ -91,6 +95,7 @@ export default function AdminTabsLayout() {
       backBehavior="history"
       screenOptions={{
         headerShown: true,
+        headerShadowVisible: false,
         headerLeft: () => <DrawerMenuButton />,
         headerStyle: getMobileHeaderStyle(colors),
         headerTintColor: colors.primary,
@@ -101,7 +106,12 @@ export default function AdminTabsLayout() {
         tabBarLabelStyle: {
           fontWeight: '700',
         },
-        tabBarStyle: getBottomTabBarStyle(colors),
+        tabBarStyle: {
+          ...getBottomTabBarStyle(colors),
+          elevation: 0,
+          shadowOpacity: 0,
+          shadowColor: 'transparent',
+        },
       }}>
       {adminTabs.map((tab) => (
         <Tabs.Screen
@@ -152,12 +162,14 @@ const styles = StyleSheet.create({
   },
   sidebarItem: {
     minHeight: 44,
-    borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
+  },
+  sidebarItemActive: {
+    borderRadius: 8,
   },
   main: {
     flex: 1,

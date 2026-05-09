@@ -15,7 +15,7 @@ export function Screen({ children, scroll = true, contentStyle }: ScreenProps) {
   const Content = scroll ? ScrollView : View;
 
   return (
-    <SafeAreaView style={[styles.safe, { backgroundColor: colors.disabledlight }]}>
+    <SafeAreaView style={[styles.safe, { backgroundColor: colors.tertiary }]}>
       <AppContainer>
         <Content
           contentContainerStyle={scroll ? [styles.content, contentStyle] : undefined}
