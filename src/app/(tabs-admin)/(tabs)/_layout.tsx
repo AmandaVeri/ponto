@@ -7,6 +7,8 @@ import { useAppTheme } from '@/hooks/useAppTheme';
 import { adminTabs } from '@/navigation/adminTabs';
 import { AppIcon } from '@/shared/components/icons/AppIcon';
 import { DrawerMenuButton } from '@/shared/components/navigation/DrawerMenuButton';
+import { getBottomTabBarStyle } from '@/styles/bottomTabs';
+import { getMobileHeaderStyle } from '@/styles/mobileHeader';
 
 export default function AdminTabsLayout() {
   const { t } = useTranslation();
@@ -86,12 +88,16 @@ export default function AdminTabsLayout() {
       screenOptions={{
         headerShown: true,
         headerLeft: () => <DrawerMenuButton />,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: {
-          backgroundColor: colors.surface,
-          borderTopColor: colors.border,
+        headerStyle: getMobileHeaderStyle(colors),
+        headerTintColor: colors.primary,
+        headerTitleAlign: 'center',
+        headerTitleStyle: { color: colors.primary, fontWeight: '700' },
+        tabBarActiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: colors.disabled,
+        tabBarLabelStyle: {
+          fontWeight: '700',
         },
+        tabBarStyle: getBottomTabBarStyle(colors),
       }}>
       {adminTabs.map((tab) => (
         <Tabs.Screen
@@ -100,7 +106,7 @@ export default function AdminTabsLayout() {
           options={{
             title: t(tab.labelKey),
             tabBarLabel: t(tab.labelKey),
-            tabBarIcon: ({ color, size }) => <AppIcon name={tab.icon} size={size} color={color} />,
+            tabBarIcon: ({ color, size }) => <AppIcon name={tab.icon} size={size} color={color} style={{ fontWeight: '700' }} />,
             ...tab.options,
           }}
         />
@@ -110,7 +116,7 @@ export default function AdminTabsLayout() {
         options={{
           title: t('common:menu.settings'),
           tabBarLabel: t('common:menu.settings'),
-          tabBarIcon: ({ color, size }) => <AppIcon name="settings" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <AppIcon name="settings" size={size} color={color} style={{ fontWeight: '700' }} />,
         }}
       />
     </Tabs>

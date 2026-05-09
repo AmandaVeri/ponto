@@ -1,5 +1,6 @@
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import type { TextStyle } from 'react-native';
 
 export type AppIconName =
   | 'timeClock'
@@ -9,12 +10,14 @@ export type AppIconName =
   | 'employees'
   | 'records'
   | 'reports'
-  | 'settings';
+  | 'settings'
+  | 'logout';
 
 type AppIconProps = {
   name: AppIconName;
   size?: number;
   color?: string;
+  style?: TextStyle;
 };
 
 const iconMap: Record<AppIconName, keyof typeof MaterialCommunityIcons.glyphMap> = {
@@ -26,8 +29,9 @@ const iconMap: Record<AppIconName, keyof typeof MaterialCommunityIcons.glyphMap>
   records: 'file-document-multiple-outline',
   reports: 'chart-box-outline',
   settings: 'cog-outline',
+  logout: 'logout',
 };
 
-export function AppIcon({ name, size = 24, color = 'currentColor' }: AppIconProps) {
-  return <MaterialCommunityIcons name={iconMap[name]} size={size} color={color} />;
+export function AppIcon({ name, size = 24, color = 'currentColor', style }: AppIconProps) {
+  return <MaterialCommunityIcons name={iconMap[name]} size={size} color={color} style={style} />;
 }

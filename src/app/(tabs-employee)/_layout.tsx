@@ -2,11 +2,13 @@ import { Drawer } from 'expo-router/drawer';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { MobileDrawerContent } from '@/shared/components/navigation/MobileDrawerContent';
+
 export default function EmployeeDrawerLayout() {
   const { t } = useTranslation();
 
   return (
-    <Drawer screenOptions={{ headerShown: false }}>
+    <Drawer drawerContent={(props) => <MobileDrawerContent {...props} />} screenOptions={{ headerShown: false }}>
       <Drawer.Screen
         name="(tabs)"
         options={{
