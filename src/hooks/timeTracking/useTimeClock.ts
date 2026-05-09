@@ -22,12 +22,13 @@ export function useTimeClock() {
 
       if (!locationValidation.allowed) {
         console.log('[useTimeClock] location not allowed', locationValidation.reason);
-        return;
+        return false;
       }
 
       const registration = await timeClockService.registerTimeClock(type);
       console.log('[useTimeClock] registered', registration);
       // TODO: Navigate to ConfirmationTimeClockScreen when the route is implemented.
+      return true;
     } finally {
       setIsRegistering(false);
     }

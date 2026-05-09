@@ -1,3 +1,3 @@
-import { DashboardScreen } from '@/screens/employee/check';
+import { EmployeeCheckScreen } from '@/screens/employee/check';
 
-export default DashboardScreen;
+export default EmployeeCheckScreen;

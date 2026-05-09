@@ -48,6 +48,14 @@
         "Pending adjustment request for 2024-05-19.",
         "Your time closing was synced."
       ]
+    },
+    "confirmPoint": {
+      "title": "Confirm check-in",
+      "successTitle": "Entry registered!",
+      "locationLabel": "Location",
+      "locationValue": "Av. Leovegildo Dias Vieira, 123`nUbatuba - SP",
+      "typeLabel": "Check-in type",
+      "confirmButton": "Ok, got it"
     }
   },
   "employeeDesktop": {

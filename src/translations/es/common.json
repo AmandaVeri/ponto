@@ -48,6 +48,14 @@
         "Solicitud de ajuste pendiente para 19/05/2024.",
         "Tu cierre de jornada fue sincronizado."
       ]
+    },
+    "confirmPoint": {
+      "title": "Confirmar punto",
+      "successTitle": "¡Entrada registrada!",
+      "locationLabel": "Ubicacion",
+      "locationValue": "Av. Leovegildo Dias Vieira, 123`nUbatuba - SP",
+      "typeLabel": "Tipo de marcaje",
+      "confirmButton": "Ok, entendido"
     }
   },
   "employeeDesktop": {

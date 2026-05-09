@@ -48,6 +48,14 @@
         "Solicitacao de ajuste pendente para 19/05/2024.",
         "Seu fechamento de ponto foi sincronizado."
       ]
+    },
+    "confirmPoint": {
+      "title": "Confirmar ponto",
+      "successTitle": "Entrada registrada!",
+      "locationLabel": "Localizacao",
+      "locationValue": "Av. Leovegildo Dias Vieira, 123`nUbatuba - SP",
+      "typeLabel": "Tipo de marcacao",
+      "confirmButton": "Ok, entendi"
     }
   },
   "employeeDesktop": {

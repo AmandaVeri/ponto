@@ -1,3 +1,3 @@
-import { TimeTrackingScreen } from '@/screens/employee/profile';
+import { EmployeeProfileScreen } from '@/screens/employee/profile';
 
-export default TimeTrackingScreen;
+export default EmployeeProfileScreen;

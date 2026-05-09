@@ -34,7 +34,7 @@ export function AppModal({ visible, title, onClose, size = 'md', children }: App
 
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, size === 'full' ? styles.fullOverlay : null]}>
         <Pressable style={styles.backdrop} onPress={onClose} />
         <View style={[styles.content, { backgroundColor: colors.tertiary, width: modalWidth }, size === 'full' ? styles.fullContent : null, theme.shadows.md]}>
           {title ? <Text style={[styles.title, { color: colors.primary }]}>{title}</Text> : null}
@@ -50,6 +50,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+  },
+  fullOverlay: {
+    justifyContent: 'flex-start',
+    padding: 0,
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,

@@ -1,3 +1,3 @@
-import { EmployeesScreen } from '@/screens/employee/historic';
+import { EmployeeHistoricScreen } from '@/screens/employee/historic';
 
-export default EmployeesScreen;
+export default EmployeeHistoricScreen;
