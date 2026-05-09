@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-na
 
 import { useAppTheme } from '@/hooks/useAppTheme';
 import { adminTabs } from '@/navigation/adminTabs';
+import { LanguageSelector } from '@/shared/components/i18n/LanguageSelector';
 import { AppIcon } from '@/shared/components/icons/AppIcon';
 import { DrawerMenuButton } from '@/shared/components/navigation/DrawerMenuButton';
 import { getBottomTabBarStyle } from '@/styles/bottomTabs';
@@ -16,10 +17,11 @@ export default function AdminTabsLayout() {
   const { width } = useWindowDimensions();
   const pathname = usePathname();
   const isDesktop = width >= 1024;
+  const modeKey = isDesktop ? 'desktop' : 'mobile';
 
   if (isDesktop) {
     return (
-      <View style={styles.desktopRoot}>
+      <View key={modeKey} style={styles.desktopRoot}>
         <View style={[styles.sidebar, { borderRightColor: colors.border }]}>
           <View style={[styles.sidebarBrand, { borderBottomColor: colors.border }]}>
             <Text style={[styles.brandText, { color: colors.text }]}>PontoCerto</Text>
@@ -66,6 +68,7 @@ export default function AdminTabsLayout() {
           <View style={[styles.topMenu, { borderBottomColor: colors.border }]}>
             <Text style={{ color: colors.textMuted }}>20/05/2024</Text>
             <View style={styles.topMenuRight}>
+              <LanguageSelector variant="header" />
               <AppIcon name="profile" size={18} color={colors.textMuted} />
               <Text style={{ color: colors.text }}>Admin</Text>
               <Pressable onPress={() => router.replace('/auth' as Href)} style={styles.logoutButton}>
@@ -84,6 +87,7 @@ export default function AdminTabsLayout() {
 
   return (
     <Tabs
+      key={modeKey}
       backBehavior="history"
       screenOptions={{
         headerShown: true,

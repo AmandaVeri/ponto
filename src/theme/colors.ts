@@ -4,6 +4,7 @@ export const lightColors = {
   secondary: '#469853',
   tertiary: '#FFFFFF',
   disabled: '#A3A7AB',
+  disabledlight: '#FAFBFE',
 } as const;
 
 export const darkColors = {
@@ -12,6 +13,7 @@ export const darkColors = {
   secondary: '#469853',
   tertiary: '#FFFFFF',
   disabled: '#A3A7AB',
+  disabledlight: '#FAFBFE',
 } as const;
 
 export type AppColorName = keyof typeof lightColors;
