@@ -8,6 +8,7 @@ export default function RootLayout() {
   return (
     <AppProvider>
       <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="auth" />
         <Stack.Screen name="(tabs-employee)" />
         <Stack.Screen name="(tabs-admin)" />
       </Stack>
