@@ -23,8 +23,8 @@ export default function AdminTabsLayout() {
   if (isDesktop) {
     return (
       <View key={modeKey} style={styles.desktopRoot}>
-        <LinearGradient colors={[colors.primary, '#123746', colors.primary]} style={[styles.sidebar, { borderRightColor: 'transparent' }]}>
-          <View style={[styles.sidebarBrand, { borderBottomColor: 'transparent' }]}>
+        <LinearGradient colors={[colors.primary, '#123746', colors.primary]} style={[styles.sidebar, { borderRightColor: colors.transparent }]}>
+          <View style={[styles.sidebarBrand, { borderBottomColor: colors.transparent }]}>
             <Text style={[styles.brandText, { color: colors.tertiary }]}>PontoCerto</Text>
           </View>
 
@@ -69,7 +69,7 @@ export default function AdminTabsLayout() {
         </LinearGradient>
 
         <View style={styles.main}>
-          <View style={[styles.topMenu, { borderBottomColor: 'transparent', backgroundColor: colors.tertiary }]}>
+          <View style={[styles.topMenu, { borderBottomColor: colors.transparent, backgroundColor: colors.tertiary }]}>
             <Text style={{ color: colors.primary }}>20/05/2024</Text>
             <View style={styles.topMenuRight}>
               <LanguageSelector variant="header" />
@@ -110,7 +110,7 @@ export default function AdminTabsLayout() {
           ...getBottomTabBarStyle(colors),
           elevation: 0,
           shadowOpacity: 0,
-          shadowColor: 'transparent',
+          shadowColor: colors.transparent,
         },
       }}>
       {adminTabs.map((tab) => (

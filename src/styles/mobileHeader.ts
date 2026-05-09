@@ -5,7 +5,7 @@ type AppColors = AppTheme['colors'];
 export function getMobileHeaderStyle(colors: AppColors) {
   return {
     backgroundColor: colors.tertiary,
-    borderBottomColor: 'transparent',
+    borderBottomColor: colors.transparent,
     borderBottomWidth: 0,
   } as const;
 }

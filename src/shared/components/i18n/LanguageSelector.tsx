@@ -50,7 +50,7 @@ export function LanguageSelector({ variant = 'drawer' }: LanguageSelectorProps) 
           styles.item,
           {
             borderColor: isHeader ? colors.disabled : colors.tertiary,
-            backgroundColor: isHeader ? colors.tertiary : 'transparent',
+            backgroundColor: isHeader ? colors.tertiary : colors.transparent,
           },
         ]}>
         <CountryFlag isoCode={currentOption.countryIso} size={14} style={styles.flag} />

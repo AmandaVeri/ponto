@@ -19,7 +19,7 @@ export function AppButton({ title, variant = 'primary', loading, disabled, leftI
   const isDisabled = disabled || loading;
   const isPrimary = variant === 'primary';
   const backgroundColor =
-    isPrimary ? 'transparent' : variant === 'secondary' ? colors.secondary : variant === 'danger' ? colors.danger : 'transparent';
+    isPrimary ? colors.transparent : variant === 'secondary' ? colors.secondary : variant === 'danger' ? colors.danger : colors.transparent;
   const color = variant === 'ghost' || variant === 'outline' ? colors.primary : isPrimary ? colors.tertiary : colors.primaryForeground;
 
   return (
@@ -30,7 +30,7 @@ export function AppButton({ title, variant = 'primary', loading, disabled, leftI
         styles.button,
         {
           backgroundColor,
-          borderColor: variant === 'outline' ? colors.primary : isPrimary ? 'transparent' : backgroundColor,
+          borderColor: variant === 'outline' ? colors.primary : isPrimary ? colors.transparent : backgroundColor,
           opacity: isDisabled ? 0.6 : 1,
         },
         typeof style === 'function' ? style(state) : style,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
+import { Platform, StyleSheet, TextInput, View, type TextInputProps, type TextStyle } from 'react-native';
 import { useController, type Control, type FieldPath, type FieldValues } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -38,6 +38,14 @@ export function AppInput<T extends FieldValues>({
   const { colors } = useAppTheme();
   const { field, fieldState } = useController({ control, name });
   const disabled = editable === false;
+  const webInputResetStyle: TextStyle | undefined =
+    Platform.OS === 'web'
+      ? ({
+          outlineWidth: 0,
+          outlineColor: colors.transparent,
+          borderWidth: 0,
+        } as unknown as TextStyle)
+      : undefined;
 
   return (
     <FormField
@@ -55,12 +63,13 @@ export function AppInput<T extends FieldValues>({
         <TextInput
           {...textInputProps}
           editable={editable}
+          underlineColorAndroid={colors.transparent}
           placeholder={placeholder}
           placeholderTextColor={colors.textMuted}
           value={field.value ? String(field.value) : ''}
           onBlur={field.onBlur}
           onChangeText={(value) => field.onChange(mask ? mask(value) : value)}
-          style={[styles.input, { color: colors.text }]}
+          style={[styles.input, { color: colors.text }, webInputResetStyle]}
         />
         {rightIcon}
       </View>
