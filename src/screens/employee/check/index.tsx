@@ -22,7 +22,7 @@ export function DashboardScreen() {
         <AppBadge label="Enterprise-ready" tone="success" />
         <Text style={[styles.cardTitle, { color: colors.text }]}>Feature-first + shared architecture</Text>
         <AppChip label="Expo Router" />
-        <Link href="/(tabs-employee)/check/details" asChild>
+        <Link href="/(tabs-employee)/(tabs)/check/details" asChild>
           <AppButton title={t('common:tabs.employee.check')} />
         </Link>
       </AppCard>

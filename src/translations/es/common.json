@@ -19,6 +19,9 @@
       "reports": "Reportes"
     }
   },
+  "menu": {
+    "logout": "Salir"
+  },
   "forms": {
     "email": "Correo",
     "password": "Contraseña",

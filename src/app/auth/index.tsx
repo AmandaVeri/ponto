@@ -26,12 +26,12 @@ export default function LoginScreen() {
     const role = username.trim().toLowerCase();
 
     if (role === 'admin') {
-      router.replace('/(tabs-admin)/dashboard' as Href);
+      router.replace('/(tabs-admin)/(tabs)/dashboard' as Href);
       return;
     }
 
     if (role === 'employee') {
-      router.replace('/(tabs-employee)/check' as Href);
+      router.replace('/(tabs-employee)/(tabs)/check' as Href);
       return;
     }
 

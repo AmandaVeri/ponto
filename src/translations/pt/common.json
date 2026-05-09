@@ -19,6 +19,9 @@
       "reports": "Relatorios"
     }
   },
+  "menu": {
+    "logout": "Sair"
+  },
   "forms": {
     "email": "E-mail",
     "password": "Senha",
