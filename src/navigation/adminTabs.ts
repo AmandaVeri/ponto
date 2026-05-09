@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react';
 import type { Tabs } from 'expo-router';
+import type { AppIconName } from '@/shared/components/icons/AppIcon';
 
 export type AdminTabName = 'dashboard' | 'employees' | 'records' | 'reports';
 
@@ -12,30 +13,27 @@ export const adminTabs: {
     | 'common:tabs.admin.employees'
     | 'common:tabs.admin.records'
     | 'common:tabs.admin.reports';
-  icon: {
-    provider: 'Ionicons' | 'Feather' | 'MaterialIcons';
-    name: string;
-  };
+  icon: AppIconName;
   options?: TabsScreenProps['options'];
 }[] = [
   {
     name: 'dashboard',
     labelKey: 'common:tabs.admin.dashboard',
-    icon: { provider: 'Ionicons', name: 'grid-outline' },
+    icon: 'dashboard',
   },
   {
     name: 'employees',
     labelKey: 'common:tabs.admin.employees',
-    icon: { provider: 'Feather', name: 'users' },
+    icon: 'employees',
   },
   {
     name: 'records',
     labelKey: 'common:tabs.admin.records',
-    icon: { provider: 'MaterialIcons', name: 'fact-check' },
+    icon: 'records',
   },
   {
     name: 'reports',
     labelKey: 'common:tabs.admin.reports',
-    icon: { provider: 'Ionicons', name: 'bar-chart-outline' },
+    icon: 'reports',
   },
 ];

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useAppTheme } from '@/hooks/useAppTheme';
 import { adminTabs } from '@/navigation/adminTabs';
-import { IconHelper } from '@/shared/components/icons/IconHelper';
+import { AppIcon } from '@/shared/components/icons/AppIcon';
 import { DrawerMenuButton } from '@/shared/components/navigation/DrawerMenuButton';
 
 export default function AdminTabsLayout() {
@@ -27,13 +27,11 @@ export default function AdminTabsLayout() {
       {adminTabs.map((tab) => (
         <Tabs.Screen
           key={tab.name}
-          name={tab.name}
+          name={`${tab.name}/index`}
           options={{
             title: t(tab.labelKey),
             tabBarLabel: t(tab.labelKey),
-            tabBarIcon: ({ color, size }) => (
-              <IconHelper provider={tab.icon.provider} name={tab.icon.name} size={size} color={color} />
-            ),
+            tabBarIcon: ({ color, size }) => <AppIcon name={tab.icon} size={size} color={color} />,
             ...tab.options,
           }}
         />
