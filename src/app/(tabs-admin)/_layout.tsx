@@ -15,6 +15,13 @@ export default function AdminDrawerLayout() {
         }}
       />
       <Drawer.Screen
+        name="(tabs)/settings/index"
+        options={{
+          drawerLabel: t('common:menu.settings'),
+          title: t('common:menu.settings'),
+        }}
+      />
+      <Drawer.Screen
         name="logout"
         options={{
           drawerLabel: t('common:menu.logout'),

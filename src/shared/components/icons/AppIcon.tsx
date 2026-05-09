@@ -8,7 +8,8 @@ export type AppIconName =
   | 'dashboard'
   | 'employees'
   | 'records'
-  | 'reports';
+  | 'reports'
+  | 'settings';
 
 type AppIconProps = {
   name: AppIconName;
@@ -24,6 +25,7 @@ const iconMap: Record<AppIconName, keyof typeof MaterialCommunityIcons.glyphMap>
   employees: 'account-multiple-outline',
   records: 'file-document-multiple-outline',
   reports: 'chart-box-outline',
+  settings: 'cog-outline',
 };
 
 export function AppIcon({ name, size = 24, color = 'currentColor' }: AppIconProps) {

@@ -20,6 +20,7 @@
     }
   },
   "menu": {
+    "settings": "Settings",
     "logout": "Logout"
   },
   "forms": {
