@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, type PressableProps } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { useAppTheme } from '@/hooks/useAppTheme';
 
@@ -16,9 +17,10 @@ type AppButtonProps = PressableProps & {
 export function AppButton({ title, variant = 'primary', loading, disabled, leftIcon, rightIcon, style, ...props }: AppButtonProps) {
   const { colors } = useAppTheme();
   const isDisabled = disabled || loading;
+  const isPrimary = variant === 'primary';
   const backgroundColor =
-    variant === 'primary' ? colors.primary : variant === 'secondary' ? colors.secondary : variant === 'danger' ? colors.danger : 'transparent';
-  const color = variant === 'ghost' || variant === 'outline' ? colors.primary : colors.primaryForeground;
+    isPrimary ? 'transparent' : variant === 'secondary' ? colors.secondary : variant === 'danger' ? colors.danger : 'transparent';
+  const color = variant === 'ghost' || variant === 'outline' ? colors.primary : isPrimary ? colors.tertiary : colors.primaryForeground;
 
   return (
     <Pressable
@@ -28,11 +30,12 @@ export function AppButton({ title, variant = 'primary', loading, disabled, leftI
         styles.button,
         {
           backgroundColor,
-          borderColor: variant === 'outline' ? colors.primary : backgroundColor,
+          borderColor: variant === 'outline' ? colors.primary : isPrimary ? 'transparent' : backgroundColor,
           opacity: isDisabled ? 0.6 : 1,
         },
         typeof style === 'function' ? style(state) : style,
       ]}>
+      {isPrimary ? <LinearGradient colors={[colors.secondary, '#61B96D']} style={styles.primaryGradient} pointerEvents="none" /> : null}
       {loading ? <ActivityIndicator color={color} /> : leftIcon}
       <Text style={[styles.title, { color }]} numberOfLines={1}>
         {title}
@@ -44,6 +47,8 @@ export function AppButton({ title, variant = 'primary', loading, disabled, leftI
 
 const styles = StyleSheet.create({
   button: {
+    position: 'relative',
+    overflow: 'hidden',
     minHeight: 44,
     borderRadius: 8,
     borderWidth: 1,
@@ -52,6 +57,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     gap: 8,
+  },
+  primaryGradient: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 8,
   },
   title: { fontSize: 16, fontWeight: '700' },
 });
