@@ -1,0 +1,21 @@
+{
+  "appName": "PontoCerto",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "loading": "Cargando",
+  "search": "Buscar",
+  "select": "Seleccionar",
+  "required": "Campo obligatorio",
+  "tabs": {
+    "option1": "Opción 1",
+    "option2": "Opción 2",
+    "option3": "Opción 3"
+  },
+  "forms": {
+    "email": "Correo",
+    "password": "Contraseña",
+    "amount": "Importe",
+    "date": "Fecha",
+    "time": "Hora"
+  }
+}

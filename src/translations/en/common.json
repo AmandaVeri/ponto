@@ -1,0 +1,21 @@
+{
+  "appName": "PontoCerto",
+  "save": "Save",
+  "cancel": "Cancel",
+  "loading": "Loading",
+  "search": "Search",
+  "select": "Select",
+  "required": "Required field",
+  "tabs": {
+    "option1": "Option 1",
+    "option2": "Option 2",
+    "option3": "Option 3"
+  },
+  "forms": {
+    "email": "Email",
+    "password": "Password",
+    "amount": "Amount",
+    "date": "Date",
+    "time": "Time"
+  }
+}
