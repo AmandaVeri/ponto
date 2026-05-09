@@ -29,5 +29,29 @@
     "amount": "Valor",
     "date": "Data",
     "time": "Hora"
+  },
+  "employeeCheck": {
+    "currentTime": "Horário atual",
+    "lastMark": "Última marcação",
+    "workedHoursToday": "Horas trabalhadas hoje",
+    "actions": {
+      "entry": "Entrada",
+      "lunchOut": "Saída p/ almoço",
+      "lunchReturn": "Volta do almoço",
+      "exit": "Saída"
+    },
+    "notifications": {
+      "open": "Abrir notificacoes",
+      "title": "Notificacoes",
+      "items": [
+        "Lembrete: registre sua entrada ate 09:00.",
+        "Solicitacao de ajuste pendente para 19/05/2024.",
+        "Seu fechamento de ponto foi sincronizado."
+      ]
+    }
+  },
+  "employeeDesktop": {
+    "title": "Disponivel apenas no celular",
+    "description": "As telas de colaborador so podem ser usadas em um dispositivo movel."
   }
 }

@@ -17,15 +17,16 @@ const styles = StyleSheet.create({
   outer: {
     flex: 1,
     margin: 10,
-  },
-  inner: {
-    flex: 1,
     borderRadius: 20,
-    overflow: 'hidden',
     shadowColor: '#000000',
     shadowOpacity: 0.14,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },
     elevation: 6,
+  },
+  inner: {
+    flex: 1,
+    borderRadius: 20,
+    overflow: 'hidden',
   },
 });

@@ -29,5 +29,29 @@
     "amount": "Importe",
     "date": "Fecha",
     "time": "Hora"
+  },
+  "employeeCheck": {
+    "currentTime": "Horario actual",
+    "lastMark": "Ultimo marcaje",
+    "workedHoursToday": "Horas trabajadas hoy",
+    "actions": {
+      "entry": "Entrada",
+      "lunchOut": "Salida a almuerzo",
+      "lunchReturn": "Vuelta de almuerzo",
+      "exit": "Salida"
+    },
+    "notifications": {
+      "open": "Abrir notificaciones",
+      "title": "Notificaciones",
+      "items": [
+        "Recordatorio: registra tu entrada antes de las 09:00.",
+        "Solicitud de ajuste pendiente para 19/05/2024.",
+        "Tu cierre de jornada fue sincronizado."
+      ]
+    }
+  },
+  "employeeDesktop": {
+    "title": "Disponible solo en telefono",
+    "description": "Las pantallas de colaborador solo se pueden usar en un dispositivo movil."
   }
 }

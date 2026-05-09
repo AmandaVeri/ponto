@@ -29,5 +29,29 @@
     "amount": "Amount",
     "date": "Date",
     "time": "Time"
+  },
+  "employeeCheck": {
+    "currentTime": "Current time",
+    "lastMark": "Last check-in",
+    "workedHoursToday": "Worked hours today",
+    "actions": {
+      "entry": "Entry",
+      "lunchOut": "Lunch out",
+      "lunchReturn": "Lunch return",
+      "exit": "Exit"
+    },
+    "notifications": {
+      "open": "Open notifications",
+      "title": "Notifications",
+      "items": [
+        "Reminder: register your entry by 09:00.",
+        "Pending adjustment request for 2024-05-19.",
+        "Your time closing was synced."
+      ]
+    }
+  },
+  "employeeDesktop": {
+    "title": "Available on phone only",
+    "description": "Employee screens can only be used on a mobile device."
   }
 }
