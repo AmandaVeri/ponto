@@ -10,10 +10,11 @@ src/
       opcao-2/             Tab2Stack
       opcao-3/             Tab3Stack
     auth/                  Auth route group
-  features/                Product modules by business capability
-    auth/
+  screens/                 Route-level screens grouped by domain
     dashboard/
     employees/
+    timeTracking/
+  components/              Domain components grouped by domain
     timeTracking/
   shared/                  Reusable UI and platform-agnostic building blocks
     components/
@@ -26,13 +27,21 @@ src/
       layout/
       modals/
       ui/
-  services/                Integrations and infrastructure
+  services/                Integrations and domain services
     api/
+    auth/
     i18n/
     storage/
+    timeTracking/
+  hooks/                   Shared and domain hooks
+    auth/
+    timeTracking/
+  types/                   Shared and domain types
+    timeTracking/
+  schemas/                 Validation schemas grouped by domain
+    auth/
   theme/                   Design tokens and light/dark themes
   store/                   Global Zustand stores
-  hooks/                   Cross-feature hooks
   navigation/              Navigation metadata and documentation
   translations/            i18n namespaces by language
   utils/                   Pure helpers
@@ -42,7 +51,7 @@ assets/                    Images, fonts and static resources
 
 ## Technical decisions
 
-- Feature-first keeps business code close to its use cases and avoids a giant shared folder.
+- Layer-first keeps folders discoverable (`services`, `hooks`, `components`, `screens`, etc.) while domain subfolders avoid collisions.
 - `shared` is intentionally generic: no business rules, no feature-specific API calls.
 - `services` owns infrastructure such as Axios, AsyncStorage and i18n bootstrapping.
 - Expo Router declares screens; shared navigation metadata lives in `src/navigation`.
@@ -54,9 +63,9 @@ assets/                    Images, fonts and static resources
 
 - Use absolute imports with `@/`.
 - Prefer named exports and barrel exports at module boundaries.
-- Feature folders may contain `components`, `screens`, `hooks`, `services`, `schemas`, `types` and `utils`.
+- Keep domain code in domain subfolders under global layers (example: `src/services/timeTracking/*`).
 - Shared components must be typed, theme-aware, translation-friendly and platform-safe.
-- API calls stay in feature services or shared service clients, not inside screens.
+- API and platform calls stay in `services`, not inside screens.
 - Screens compose hooks and components; they should not hold infrastructure logic.
 
 ## Recommended libraries

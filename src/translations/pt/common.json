@@ -7,9 +7,17 @@
   "select": "Selecionar",
   "required": "Campo obrigatório",
   "tabs": {
-    "option1": "Opção 1",
-    "option2": "Opção 2",
-    "option3": "Opção 3"
+    "employee": {
+      "check": "Check",
+      "historic": "Historico",
+      "profile": "Perfil"
+    },
+    "admin": {
+      "dashboard": "Dashboard",
+      "employees": "Colaboradores",
+      "records": "Registros",
+      "reports": "Relatorios"
+    }
   },
   "forms": {
     "email": "E-mail",
